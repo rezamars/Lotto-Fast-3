@@ -23,7 +23,7 @@ import javafx.stage.Screen;
 public class Right extends VBox{
     
     private Button explanationButton = new Button("Förklaring ?");
-    private Button ranButton = new Button("Slumpa 11 rader");
+    private Button ranButton = new Button("Slumpa 8 rader");
     
     private HBox spaceHbox1 = new HBox();
     private HBox spaceHbox2 = new HBox();

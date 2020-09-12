@@ -44,11 +44,10 @@ public class QuestionWindow {
         
         //Description-text
         String explanationText1 = "\nLottorads-generering:";
-        String explanationText2 = "\nDetta program genererar 11 lottorader. \nAnvändaren väljer 4 fasta nummer "
-                + "som är fasta nummer i \nalla 11 rader. De resterande numren (3 nummer i alla rader) \ni alla raderna slumpas "
-                + "fram av programmet där \nde övriga numren (de resterande 31 numren) är med \n1 gång på slumpvis valda "
-                + "platser. På så sätt är alla \nnumren (1 till 35) garanterad med minst 1 gång. \nDet finns 2 undantag på den "
-                + "11:e raden som innehåller 2 \nslumpvis valda nummer som är dubletter." ;
+        String explanationText2 = "\nDetta program genererar 8 lottorader. \nAnvändaren väljer 3 fasta nummer "
+                + "som är fasta nummer i \nalla 8 rader. De resterande numren (4 nummer i alla rader) \ni alla raderna slumpas "
+                + "fram av programmet där \nde övriga numren (de resterande 32 numren) är med \n1 gång på slumpvis valda "
+                + "platser. På så sätt är alla \nnumren (1 till 35) garanterad med minst 1 gång."; 
         
         //Setting fonts and text
         Font text1Font ;

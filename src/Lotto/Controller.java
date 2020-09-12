@@ -11,7 +11,7 @@ import Graphic.QuestionWindow;
 import Graphic.Right;
 import Graphic.Top;
 import Model.Clear;
-import Model.Ran11LottoRows;
+import Model.Ran8LottoRows;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -29,7 +29,7 @@ public class Controller extends Application {
     private Center center = new Center();
     private Left left = new Left(right,center);
     
-    private Ran11LottoRows ran11LottoRows;
+    private Ran8LottoRows ran11LottoRows;
     private QuestionWindow questionWindow = new QuestionWindow(right);
     
     private Clear clear = new Clear(right, left, center);
@@ -50,9 +50,9 @@ public class Controller extends Application {
         //Create object of the view and sending references
         View v = new View(primaryStage, top, left, center, right);
         
-        ran11LottoRows = new Ran11LottoRows(right, left, center);
+        ran11LottoRows = new Ran8LottoRows(right, left, center);
         
-        left.setRan11RowsReference(ran11LottoRows);
+        left.setRan8RowsReference(ran11LottoRows);
         
         questionWindow.addQuestionButtonListener();
         

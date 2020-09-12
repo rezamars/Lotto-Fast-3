@@ -29,10 +29,10 @@ public class NumberChooser {
     private Scene ncScene = new Scene(borderPane, 535, 160);
     private Button[] buttonArray = new Button[35];
     private Left left1;
-    private Label[] fixed4LabelArray;
+    private Label[] fixed3LabelArray;
     private int fixedIndex = 0;
     private  String strAdd = "  ";
-    private int[] fixed4NumbersArray;
+    private int[] fixed3NumbersArray;
     private HBox[] hboxArray = new HBox[7];
     
     private NumberChooser numberChooser;
@@ -41,8 +41,8 @@ public class NumberChooser {
     public NumberChooser(Left left){
         
         this.left1 = left;
-        this.fixed4NumbersArray = left1.get4FixedNumbersArray();
-        this.fixed4LabelArray = left1.getFixed4LabelArray();
+        this.fixed3NumbersArray = left1.get3FixedNumbersArray();
+        this.fixed3LabelArray = left1.getFixed3LabelArray();
         this.numberChooser = left1.getNumberChooser();
         
     }
@@ -135,10 +135,10 @@ public class NumberChooser {
                             else {
                                 strAdd = "" + Integer.toString(loopIndex+1) + " ";
                             }
-                            fixed4LabelArray[fixedIndex].setText(strAdd);
+                            fixed3LabelArray[fixedIndex].setText(strAdd);
                             setFixedNumbersInNumberArrayAndDisable(fixedIndex, loopIndex);
                             
-                            this.left1.getRan11Lottorows().setRanButtonEnabling();
+                            this.left1.getRan8Lottorows().setRanButtonEnabling();
                             
                             numberChooserStage.close();
                         }
@@ -158,13 +158,13 @@ public class NumberChooser {
     public void setFixedNumbersInNumberArrayAndDisable(int exIndex, int number){
         
         int a = 0;
-        a = fixed4NumbersArray[exIndex];
+        a = fixed3NumbersArray[exIndex];
         
         if (a != -1){
             buttonArray[a].setDisable(false);
         }
         
-        fixed4NumbersArray[exIndex] = number;
+        fixed3NumbersArray[exIndex] = number;
         buttonArray[number].setDisable(true);
     }
     

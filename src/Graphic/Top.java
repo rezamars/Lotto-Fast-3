@@ -22,7 +22,7 @@ import javafx.scene.text.FontWeight;
 //the top-object of the borderpane
 public class Top extends HBox{
     
-    private Label lottoLabel = new Label("Lotto, 4 fasta nummer, 11 rader");
+    private Label lottoLabel = new Label("Lotto, 3 fasta nummer, 8 rader");
     private Label lottoImageLabel = new Label();
     private String imagePath = "lotto.png";
     private Image image;

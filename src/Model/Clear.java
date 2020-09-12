@@ -25,8 +25,8 @@ public class Clear {
     private Left left;
     private Center center;
     
-    private Label[] fixed4LabelArray;
-    private int[] fixed4NumbersArray;
+    private Label[] fixed3LabelArray;
+    private int[] fixed3NumbersArray;
     
     private Button[] NChooserButtonArray;
     private Label[] lottoLabelArray;
@@ -40,8 +40,8 @@ public class Clear {
         this.center = center1;
         this.lottoLabelArray = center.getLottoLabelArray();
         
-        this.fixed4LabelArray = left.getFixed4LabelArray();
-        this.fixed4NumbersArray = left.get4FixedNumbersArray();
+        this.fixed3LabelArray = left.getFixed3LabelArray();
+        this.fixed3NumbersArray = left.get3FixedNumbersArray();
         
         this.ranButton = right.getRanButton();
         this.NChooserButtonArray = left.getNumberChooser().getButtonArray();
@@ -57,14 +57,14 @@ public class Clear {
         
         clearButton.setOnAction(e -> {
             
-            for(int y = 0 ; y < 4 ; y++){
-                fixed4LabelArray[y].setText("     ");
-                fixed4NumbersArray[y] = -1;
+            for(int y = 0 ; y < 3 ; y++){
+                fixed3LabelArray[y].setText("     ");
+                fixed3NumbersArray[y] = -1;
             }
             for(int z = 0 ; z < 35 ; z++){
                 NChooserButtonArray[z].setDisable(false);
             }
-            for(int i = 0 ; i < 77 ; i++){
+            for(int i = 0 ; i < 56 ; i++){
                 lottoLabelArray[i].setStyle("-fx-border-color: none;");
                 lottoLabelArray[i].setBackground(null);
             }

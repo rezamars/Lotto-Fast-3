@@ -6,7 +6,7 @@
 package Graphic;
 
 
-import Model.Ran11LottoRows;
+import Model.Ran8LottoRows;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -28,15 +28,15 @@ import javafx.scene.text.FontWeight;
 public class Left extends VBox{
     
     
-    private Label headingLabel = new Label("Ange 4 fasta nummer:");
+    private Label headingLabel = new Label("Ange 3 fasta nummer:");
     private HBox spaceHbox = new HBox();
     
-    private HBox[] hboxLabelArray = new HBox[4];
-    private Label[] rowNumberlabelArray = new Label[4];
-    private Label[] fixed4LabelArray = new Label[4];
-    private int[] fixed4NumbersArray = new int[4];
+    private HBox[] hboxLabelArray = new HBox[3];
+    private Label[] rowNumberlabelArray = new Label[3];
+    private Label[] fixed3LabelArray = new Label[3];
+    private int[] fixed3NumbersArray = new int[3];
     
-    private Button[] chooseNumberbutton = new Button[4];
+    private Button[] chooseNumberbutton = new Button[3];
     private NumberChooser numberChooser = new NumberChooser(this);
     private Button[] buttonArray; 
     
@@ -45,7 +45,7 @@ public class Left extends VBox{
     
     private Button ranButton;
     private Button clearButton;
-    private Ran11LottoRows ran11LottoRows;
+    private Ran8LottoRows ran8LottoRows;
     
     
     public Left(Right right, Center center){
@@ -101,13 +101,13 @@ public class Left extends VBox{
         }
         
         //create 4 objects of the labels for the fixed numbers
-        for(int x = 0 ; x < fixed4LabelArray.length ; x++){
-            fixed4LabelArray[x] = new Label();
-            fixed4LabelArray[x].setText("     ");
-            fixed4LabelArray[x].setFont(labelFont);
-            fixed4LabelArray[x].setMinSize(30, 40);
+        for(int x = 0 ; x < fixed3LabelArray.length ; x++){
+            fixed3LabelArray[x] = new Label();
+            fixed3LabelArray[x].setText("     ");
+            fixed3LabelArray[x].setFont(labelFont);
+            fixed3LabelArray[x].setMinSize(30, 40);
             //filling the fixednumbersarray with -1, so that it do not contain null
-            fixed4NumbersArray[x] = (-1);
+            fixed3NumbersArray[x] = (-1);
         }
         
         
@@ -121,7 +121,7 @@ public class Left extends VBox{
         //add the 4 buttons to the hboxes
         for(int i = 0 ; i < hboxLabelArray.length ; i++){
             hboxLabelArray[i].getChildren().add(rowNumberlabelArray[i]);
-            hboxLabelArray[i].getChildren().add(fixed4LabelArray[i]);
+            hboxLabelArray[i].getChildren().add(fixed3LabelArray[i]);
             if (i == 0){
                 hboxLabelArray[i].getChildren().add(chooseNumberbutton[0]);
             }
@@ -137,7 +137,7 @@ public class Left extends VBox{
             
             //setting color for the rownumbers and the fixednumber-labels
             rowNumberlabelArray[i].setStyle("-fx-border-color: yellow;");
-            fixed4LabelArray[i].setStyle("-fx-border-color: yellow;");
+            fixed3LabelArray[i].setStyle("-fx-border-color: yellow;");
         }
         
        chooseButtonListener();
@@ -149,9 +149,9 @@ public class Left extends VBox{
     }
     
     //a method for recieving reference to this classe's ran11LottoRows-variable
-    public void setRan11RowsReference(Ran11LottoRows ran11LottoRows1){
+    public void setRan8RowsReference(Ran8LottoRows ran11LottoRows1){
         
-        this.ran11LottoRows = ran11LottoRows1;
+        this.ran8LottoRows = ran11LottoRows1;
         
     }
     
@@ -178,20 +178,20 @@ public class Left extends VBox{
     }
     
     
-    public Label[] getFixed4LabelArray(){
-        return this.fixed4LabelArray;
+    public Label[] getFixed3LabelArray(){
+        return this.fixed3LabelArray;
     }
     
-    public int[] get4FixedNumbersArray(){
-        return this.fixed4NumbersArray;
+    public int[] get3FixedNumbersArray(){
+        return this.fixed3NumbersArray;
     }
     
     public NumberChooser getNumberChooser(){
         return this.numberChooser;
     }
  
-    public Ran11LottoRows getRan11Lottorows(){
-        return this.ran11LottoRows;
+    public Ran8LottoRows getRan8Lottorows(){
+        return this.ran8LottoRows;
     }
     
 }

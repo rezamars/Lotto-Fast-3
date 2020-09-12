@@ -27,10 +27,10 @@ public class Center extends VBox{
     private Label headingLabel = new Label("Lottorader:");
     private HBox spaceHbox = new HBox();
     
-    private HBox[] hboxLabelArray = new HBox[11];
-    private Label[] rowNumberlabelArray = new Label[11];
+    private HBox[] hboxLabelArray = new HBox[8];
+    private Label[] rowNumberlabelArray = new Label[8];
     
-    private Label[] lottoLabelArray = new Label[77];
+    private Label[] lottoLabelArray = new Label[56];
     
     
     public Center(){

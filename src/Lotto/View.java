@@ -44,7 +44,7 @@ public class View {
         //scene settings
         Scene scene = new Scene(borderPane, 300, 250);
         
-        primaryStage.setTitle("Lotto-4-fast");
+        primaryStage.setTitle("Lotto-3-fast");
         primaryStage.setScene(scene);
         primaryStage.show();
         

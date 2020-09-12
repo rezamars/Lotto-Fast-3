@@ -22,31 +22,31 @@ import javafx.scene.paint.Color;
  * @author Reza
  */
 //this class handles the randomizing of the 11 lottorows with 4 fixed numbers in all 11 rows
-public class Ran11LottoRows {
+public class Ran8LottoRows {
     
     private Right right1;
     private Left left1;
     private Center center1;
     private Button ranButton;
-    private int[] fixed4NumbersArray;
+    private int[] fixed3NumbersArray;
     
     private Label[] lottoLabelArray;
-    private int[] lottoNumberArray= new int[77];
+    private int[] lottoNumberArray= new int[56];
     private Random ran = new Random();
     private  boolean[] numberFlagArray = new boolean[35];
     
-    private int[] arrayOf31 = new int[31];
-    private int[] twoDublicatesArray = new int[2];
+    private int[] arrayOf32 = new int[32];
+    //private int[] twoDublicatesArray = new int[2];
     
     
-    public Ran11LottoRows(Right right, Left left, Center center){
+    public Ran8LottoRows(Right right, Left left, Center center){
         
         this.left1 = left;
         this.right1 = right;
         this.center1 = center;
         this.ranButton = right1.getRanButton();
         this.lottoLabelArray = center1.getLottoLabelArray();
-        this.fixed4NumbersArray = left1.get4FixedNumbersArray();
+        this.fixed3NumbersArray = left1.get3FixedNumbersArray();
         
         
         addRanButtonListener();
@@ -59,7 +59,7 @@ public class Ran11LottoRows {
         
         ranButton.setOnAction(e -> {
             fillTheLottoArrayWith0AndThefixedNumbers();
-            randomize11Rows();
+            randomize8Rows();
             sortArray7();
             setLottoLabelColours();
             fillThe11RowsInLabels();
@@ -73,13 +73,13 @@ public class Ran11LottoRows {
         
         int exCounter = 0;
         
-        for(int x = 0 ; x < 4 ; x++){
-            if (fixed4NumbersArray[x] != (-1)){
+        for(int x = 0 ; x < 3 ; x++){
+            if (fixed3NumbersArray[x] != (-1)){
                 exCounter++;
             }
         }
         
-        if (exCounter == 4){
+        if (exCounter == 3){
             ranButton.setDisable(false);
         }
         else{
@@ -90,7 +90,7 @@ public class Ran11LottoRows {
     //fills the lottonumber-array with the 4 fixed numbers chosen by the user
     public void fillTheLottoArrayWith0AndThefixedNumbers(){
         
-        for (int i = 0 ; i < 77 ; i++){
+        for (int i = 0 ; i < 56 ; i++){
             lottoNumberArray[i] = 0;
         }
         
@@ -99,40 +99,41 @@ public class Ran11LottoRows {
         int fixedNumberFromIndex = 0;
         int fixedNumberUntilIndex = 0;
         
-        for(int x = 0 ; x<77 ; x+=7){
+        for(int x = 0 ; x<56 ; x+=7){
             
             if ( x == 0){
                 fixedNumberFromIndex = 0;
-                fixedNumberUntilIndex = 3;
+                fixedNumberUntilIndex = 2;
             }
             else if( x == 7){
                 fixedNumberFromIndex = 7;
-                fixedNumberUntilIndex = 10;
+                fixedNumberUntilIndex = 9;
             }
             else if( x == 14){
                 fixedNumberFromIndex = 14;
-                fixedNumberUntilIndex = 17;
+                fixedNumberUntilIndex = 16;
             }
             else if( x == 21){
                 fixedNumberFromIndex = 21;
-                fixedNumberUntilIndex = 24;
+                fixedNumberUntilIndex = 23;
             }
             else if( x == 28){
                 fixedNumberFromIndex = 28;
-                fixedNumberUntilIndex = 31;
+                fixedNumberUntilIndex = 30;
             }
             else if( x == 35){
                 fixedNumberFromIndex = 35;
-                fixedNumberUntilIndex = 38;
+                fixedNumberUntilIndex = 37;
             }
             else if( x == 42){
                 fixedNumberFromIndex = 42;
-                fixedNumberUntilIndex = 45;
+                fixedNumberUntilIndex = 44;
             }
             else if( x == 49){
                 fixedNumberFromIndex = 49;
-                fixedNumberUntilIndex = 52;
+                fixedNumberUntilIndex = 51;
             }
+            /*
             else if( x == 56){
                 fixedNumberFromIndex = 56;
                 fixedNumberUntilIndex = 59;
@@ -145,11 +146,12 @@ public class Ran11LottoRows {
                 fixedNumberFromIndex = 70;
                 fixedNumberUntilIndex = 73;
             }
+            */
             
             //filling the 4 fixed numbers of all rows
             int loopIter = 0;
             for(int k = fixedNumberFromIndex ; k <= fixedNumberUntilIndex ; k++){
-                lottoNumberArray[k] = (fixed4NumbersArray[loopIter])+1;
+                lottoNumberArray[k] = (fixed3NumbersArray[loopIter])+1;
                 loopIter++;
             }
             
@@ -160,18 +162,18 @@ public class Ran11LottoRows {
     
     //filling (at randomized positions) the arrayOf31 with all numbers (1-35) except the 4 fixed numbers,
     //also randomizing the 2 dublettes in row 11
-    public void randomize11Rows(){
+    public void randomize8Rows(){
         
-        for (int i = 0 ; i < arrayOf31.length ; i++){
-            arrayOf31[i] = 0;
+        for (int i = 0 ; i < arrayOf32.length ; i++){
+            arrayOf32[i] = 0;
         }
         
-        for(int a = 0 ; a < arrayOf31.length ; a++){
+        for(int a = 0 ; a < arrayOf32.length ; a++){
             
             int ra = ran.nextInt(35);
-            for(int t = 0 ; t<4 ; t++){ 
-                if ((ra+1) != fixed4NumbersArray[t]+1){
-                    arrayOf31[a] = (ra + 1);
+            for(int t = 0 ; t<3 ; t++){ 
+                if ((ra+1) != fixed3NumbersArray[t]+1){
+                    arrayOf32[a] = (ra + 1);
                     
                 }
             }
@@ -180,22 +182,22 @@ public class Ran11LottoRows {
         
         
         int x= 0;
-        while( x<arrayOf31.length ){
+        while( x<arrayOf32.length ){
             
-            for(int i = 0 ; i<arrayOf31.length ; i++){
+            for(int i = 0 ; i<arrayOf32.length ; i++){
                 
-                if(((arrayOf31[x] == arrayOf31[i]) && (i!=x)) || ((fixed4NumbersArray[0]+1) == arrayOf31[i]) || 
-                        ((fixed4NumbersArray[1]+1) == arrayOf31[i]) || ((fixed4NumbersArray[2]+1) == arrayOf31[i]) || 
-                        ((fixed4NumbersArray[3]+1) == arrayOf31[i])){
+                if(((arrayOf32[x] == arrayOf32[i]) && (i!=x)) || ((fixed3NumbersArray[0]+1) == arrayOf32[i]) || 
+                        ((fixed3NumbersArray[1]+1) == arrayOf32[i]) || ((fixed3NumbersArray[2]+1) == arrayOf32[i]) 
+                        ){
                     int ra = ran.nextInt(35);
-                    arrayOf31[i] = (ra + 1);
+                    arrayOf32[i] = (ra + 1);
                     x=0;
                 }
             }
             x++;
         }
         
-        
+        /*
         int twoRan1 = ran.nextInt(35);
         twoDublicatesArray[0] = twoRan1+1;
         int twoRan2 = ran.nextInt(35);
@@ -203,13 +205,14 @@ public class Ran11LottoRows {
         
         for(int i = 0 ; i < 2 ; i++){
             
-            if( (twoDublicatesArray[0] == twoDublicatesArray[1]) || ((fixed4NumbersArray[0]+1) == twoDublicatesArray[i]) || 
-                        ((fixed4NumbersArray[1]+1) == twoDublicatesArray[i]) || ((fixed4NumbersArray[2]+1) == twoDublicatesArray[i]) || 
-                        ((fixed4NumbersArray[3]+1) == twoDublicatesArray[i]) || (twoDublicatesArray[i] == arrayOf31[30])){
+            if( (twoDublicatesArray[0] == twoDublicatesArray[1]) || ((fixed3NumbersArray[0]+1) == twoDublicatesArray[i]) || 
+                        ((fixed3NumbersArray[1]+1) == twoDublicatesArray[i]) || ((fixed3NumbersArray[2]+1) == twoDublicatesArray[i]) || 
+                        ((fixed3NumbersArray[3]+1) == twoDublicatesArray[i]) || (twoDublicatesArray[i] == arrayOf31[30])){
                 int ra = ran.nextInt(35);
                 twoDublicatesArray[i] = ra+1;
             }
         }
+        */
         
         fillTheRestOfLottoArray();
         
@@ -221,42 +224,43 @@ public class Ran11LottoRows {
         
         int randomNumberFromIndex = 0;
         int randomNumberUntilIndex = 0;
-        int arrayOf31loopIter = 0;
+        int arrayOf32loopIter = 0;
         
-        for(int x = 0 ; x<77 ; x+=7){
+        for(int x = 0 ; x<56 ; x+=7){
             
             if ( x == 0){
-                randomNumberFromIndex = 4;
+                randomNumberFromIndex = 3;
                 randomNumberUntilIndex = 6;
             }
             else if( x == 7){
-                randomNumberFromIndex = 11;
+                randomNumberFromIndex = 10;
                 randomNumberUntilIndex = 13;
             }
             else if( x == 14){
-                randomNumberFromIndex = 18;
+                randomNumberFromIndex = 17;
                 randomNumberUntilIndex = 20;
             }
             else if( x == 21){
-                randomNumberFromIndex = 25;
+                randomNumberFromIndex = 24;
                 randomNumberUntilIndex = 27;
             }
             else if( x == 28){
-                randomNumberFromIndex = 32;
+                randomNumberFromIndex = 31;
                 randomNumberUntilIndex = 34;
             }
             else if( x == 35){
-                randomNumberFromIndex = 39;
+                randomNumberFromIndex = 38;
                 randomNumberUntilIndex = 41;
             }
             else if( x == 42){
-                randomNumberFromIndex = 46;
+                randomNumberFromIndex = 45;
                 randomNumberUntilIndex = 48;
             }
             else if( x == 49){
-                randomNumberFromIndex = 53;
+                randomNumberFromIndex = 52;
                 randomNumberUntilIndex = 55;
             }
+            /*
             else if( x == 56){
                 randomNumberFromIndex = 60;
                 randomNumberUntilIndex = 62;
@@ -269,18 +273,19 @@ public class Ran11LottoRows {
                 randomNumberFromIndex = 74;
                 randomNumberUntilIndex = 76;
             }
+            */
             
-            if( x == 70 ){
-                lottoNumberArray[74] = arrayOf31[30];
-                lottoNumberArray[75] = twoDublicatesArray[0];
-                lottoNumberArray[76] = twoDublicatesArray[1];
+            if( x == 49 ){
+                //lottoNumberArray[74] = arrayOf31[30];
+                //lottoNumberArray[75] = twoDublicatesArray[0];
+                //lottoNumberArray[76] = twoDublicatesArray[1];
             }
-            else{
+            //else{
                 for(int k = randomNumberFromIndex ; k <= randomNumberUntilIndex ; k++){
-                lottoNumberArray[k] = arrayOf31[arrayOf31loopIter];
-                arrayOf31loopIter++;
+                lottoNumberArray[k] = arrayOf32[arrayOf32loopIter];
+                arrayOf32loopIter++;
                 }
-            }
+            //}
             
         }
         
@@ -409,6 +414,7 @@ public class Ran11LottoRows {
             }
         }
         
+        /*
         temp = 0;
         
         for (int i = 56; i < 63 ; i++) {
@@ -453,6 +459,7 @@ public class Ran11LottoRows {
                    }
             }
         }
+        */
     }
     
     //Setting label-background colour, pink for the randomized numbers-labels
@@ -460,7 +467,7 @@ public class Ran11LottoRows {
     public void setLottoLabelColours(){
         
         
-        for(int i = 0 ; i < 77 ; i++){
+        for(int i = 0 ; i < 56 ; i++){
             
             BackgroundFill background_fill = new BackgroundFill(Color.PINK,  CornerRadii.EMPTY, Insets.EMPTY); 
             Background background = new Background(background_fill);
@@ -469,9 +476,9 @@ public class Ran11LottoRows {
             lottoLabelArray[i].setTextFill(Color.BLACK);
         }
         
-        for(int i = 0 ; i < 77 ; i++){
-            for(int t = 0 ; t<4 ; t++){ 
-                if(lottoNumberArray[i] == fixed4NumbersArray[t]+1){
+        for(int i = 0 ; i < 56 ; i++){
+            for(int t = 0 ; t<3 ; t++){ 
+                if(lottoNumberArray[i] == fixed3NumbersArray[t]+1){
                     BackgroundFill background_fill = new BackgroundFill(Color.LIGHTBLUE,  CornerRadii.EMPTY, Insets.EMPTY); 
                     Background background = new Background(background_fill);
                     lottoLabelArray[i].setBackground(background);
@@ -523,7 +530,7 @@ public class Ran11LottoRows {
         
         int arrayIndex = 0;
         
-        for(int w=0; w<77; w++){
+        for(int w=0; w<56; w++){
             
             lottoLabelArray[arrayIndex].setText(" " + (Integer.toString(lottoNumberArray[w])) + " ");
                 arrayIndex++;
