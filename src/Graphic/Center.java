@@ -89,7 +89,7 @@ public class Center extends VBox{
         Font numberLabelFont ;
         numberLabelFont = Font.font("Arial", FontWeight.BOLD, 23);
         
-        //creating objects of the lottoNumberLabel-array (77 labels) and setting properties
+        //creating objects of the lottoNumberLabel-array (56 labels) and setting properties
         for(int w = 0 ; w < lottoLabelArray.length ; w++){
             lottoLabelArray[w] = new Label();
             lottoLabelArray[w].setAlignment(Pos.TOP_CENTER);

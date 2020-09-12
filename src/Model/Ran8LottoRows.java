@@ -21,7 +21,7 @@ import javafx.scene.paint.Color;
  *
  * @author Reza
  */
-//this class handles the randomizing of the 11 lottorows with 4 fixed numbers in all 11 rows
+//this class handles the randomizing of the 8 lottorows with 3 fixed numbers in all 8 rows
 public class Ran8LottoRows {
     
     private Right right1;
@@ -36,7 +36,6 @@ public class Ran8LottoRows {
     private  boolean[] numberFlagArray = new boolean[35];
     
     private int[] arrayOf32 = new int[32];
-    //private int[] twoDublicatesArray = new int[2];
     
     
     public Ran8LottoRows(Right right, Left left, Center center){
@@ -52,9 +51,9 @@ public class Ran8LottoRows {
         addRanButtonListener();
     }
     
-    //adds listener to the ran-button, starts filling the 11 lottorows with 4 fixed numbers,
-    //then, randomizes the rest (3 other numbers in all 11), making sure that all 1 to 35 numbers 
-    //are included, also 2 dublettes in row 11, then it sorts all 11 rows and sets colours to all lottolabels
+    //adds listener to the ran-button, starts filling the 8 lottorows with 3 fixed numbers,
+    //then, randomizes the rest (4 other numbers in all 8), making sure that all 1 to 35 numbers 
+    //are included,  then it sorts all 8 rows and sets colours to all lottolabels
     public void addRanButtonListener(){
         
         ranButton.setOnAction(e -> {
@@ -68,7 +67,7 @@ public class Ran8LottoRows {
     }
     
     //handles the counting of amount of fixednumbers chosen by the user
-    //if 4 numbers chosen, the ranbutton becomes clickable
+    //if 3 numbers chosen, the ranbutton becomes clickable
     public void setRanButtonEnabling(){
         
         int exCounter = 0;
@@ -87,7 +86,7 @@ public class Ran8LottoRows {
         }
     }
     
-    //fills the lottonumber-array with the 4 fixed numbers chosen by the user
+    //fills the lottonumber-array with the 3 fixed numbers chosen by the user
     public void fillTheLottoArrayWith0AndThefixedNumbers(){
         
         for (int i = 0 ; i < 56 ; i++){
@@ -95,7 +94,7 @@ public class Ran8LottoRows {
         }
         
         //2 vars that specifies the first and last position of the fixed numbers 
-        //in all 11 lotto-rows
+        //in all 8 lotto-rows
         int fixedNumberFromIndex = 0;
         int fixedNumberUntilIndex = 0;
         
@@ -133,22 +132,8 @@ public class Ran8LottoRows {
                 fixedNumberFromIndex = 49;
                 fixedNumberUntilIndex = 51;
             }
-            /*
-            else if( x == 56){
-                fixedNumberFromIndex = 56;
-                fixedNumberUntilIndex = 59;
-            }
-            else if( x == 63){
-                fixedNumberFromIndex = 63;
-                fixedNumberUntilIndex = 66;
-            }
-            else if( x == 70){
-                fixedNumberFromIndex = 70;
-                fixedNumberUntilIndex = 73;
-            }
-            */
             
-            //filling the 4 fixed numbers of all rows
+            //filling the 3 fixed numbers of all rows
             int loopIter = 0;
             for(int k = fixedNumberFromIndex ; k <= fixedNumberUntilIndex ; k++){
                 lottoNumberArray[k] = (fixed3NumbersArray[loopIter])+1;
@@ -160,10 +145,10 @@ public class Ran8LottoRows {
         
     }
     
-    //filling (at randomized positions) the arrayOf31 with all numbers (1-35) except the 4 fixed numbers,
-    //also randomizing the 2 dublettes in row 11
+    //filling (at randomized positions) the arrayOf32 with all numbers (1-35) except the 3 fixed numbers
     public void randomize8Rows(){
         
+        //Initializer
         for (int i = 0 ; i < arrayOf32.length ; i++){
             arrayOf32[i] = 0;
         }
@@ -197,29 +182,12 @@ public class Ran8LottoRows {
             x++;
         }
         
-        /*
-        int twoRan1 = ran.nextInt(35);
-        twoDublicatesArray[0] = twoRan1+1;
-        int twoRan2 = ran.nextInt(35);
-        twoDublicatesArray[1] = twoRan2+1;
-        
-        for(int i = 0 ; i < 2 ; i++){
-            
-            if( (twoDublicatesArray[0] == twoDublicatesArray[1]) || ((fixed3NumbersArray[0]+1) == twoDublicatesArray[i]) || 
-                        ((fixed3NumbersArray[1]+1) == twoDublicatesArray[i]) || ((fixed3NumbersArray[2]+1) == twoDublicatesArray[i]) || 
-                        ((fixed3NumbersArray[3]+1) == twoDublicatesArray[i]) || (twoDublicatesArray[i] == arrayOf31[30])){
-                int ra = ran.nextInt(35);
-                twoDublicatesArray[i] = ra+1;
-            }
-        }
-        */
         
         fillTheRestOfLottoArray();
         
     }
     
-    //filling the position 5 till 7 in the lottonumber-array with the randomized arrayOf31 
-    //and the 2 dublettes in row 11
+    //filling the position 4 to 7 in the lottonumber-array with the randomized arrayOf32 
     public void fillTheRestOfLottoArray(){
         
         int randomNumberFromIndex = 0;
@@ -260,32 +228,11 @@ public class Ran8LottoRows {
                 randomNumberFromIndex = 52;
                 randomNumberUntilIndex = 55;
             }
-            /*
-            else if( x == 56){
-                randomNumberFromIndex = 60;
-                randomNumberUntilIndex = 62;
-            }
-            else if( x == 63){
-                randomNumberFromIndex = 67;
-                randomNumberUntilIndex = 69;
-            }
-            else if( x == 70){
-                randomNumberFromIndex = 74;
-                randomNumberUntilIndex = 76;
-            }
-            */
             
-            if( x == 49 ){
-                //lottoNumberArray[74] = arrayOf31[30];
-                //lottoNumberArray[75] = twoDublicatesArray[0];
-                //lottoNumberArray[76] = twoDublicatesArray[1];
-            }
-            //else{
-                for(int k = randomNumberFromIndex ; k <= randomNumberUntilIndex ; k++){
+            for(int k = randomNumberFromIndex ; k <= randomNumberUntilIndex ; k++){
                 lottoNumberArray[k] = arrayOf32[arrayOf32loopIter];
                 arrayOf32loopIter++;
-                }
-            //}
+            }
             
         }
         
@@ -414,52 +361,6 @@ public class Ran8LottoRows {
             }
         }
         
-        /*
-        temp = 0;
-        
-        for (int i = 56; i < 63 ; i++) {
-            
-            for (int j = i; j > 56; j--) {
-                
-                if (lottoNumberArray[j] < lottoNumberArray [j - 1]) {
-                 
-                    temp = lottoNumberArray[j];
-                    lottoNumberArray[j] = lottoNumberArray[j - 1];
-                    lottoNumberArray[j - 1] = temp;
-                   }
-            }
-        }
-        
-        temp = 0;
-        
-        for (int i = 63 ; i < 70; i++) {
-            
-            for (int j = i; j > 63; j--) {
-                
-                if (lottoNumberArray[j] < lottoNumberArray [j - 1]) {
-                 
-                    temp = lottoNumberArray[j];
-                    lottoNumberArray[j] = lottoNumberArray[j - 1];
-                    lottoNumberArray[j - 1] = temp;
-                   }
-            }
-        }
-        
-        temp = 0;
-        
-        for (int i = 70; i < 77; i++) {
-            
-            for (int j = i; j > 70; j--) {
-                
-                if (lottoNumberArray[j] < lottoNumberArray [j - 1]) {
-                 
-                    temp = lottoNumberArray[j];
-                    lottoNumberArray[j] = lottoNumberArray[j - 1];
-                    lottoNumberArray[j - 1] = temp;
-                   }
-            }
-        }
-        */
     }
     
     //Setting label-background colour, pink for the randomized numbers-labels
@@ -525,7 +426,7 @@ public class Ran8LottoRows {
     
     
     
-    //filling the labels of the randomized lottorows including 4 fixed numbers in every row
+    //filling the labels of the randomized lottorows including 3 fixed numbers in every row
     public void fillThe11RowsInLabels(){
         
         int arrayIndex = 0;

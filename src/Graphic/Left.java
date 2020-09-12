@@ -100,7 +100,7 @@ public class Left extends VBox{
             rowNumberlabelArray[z].setMinSize(30, 40);
         }
         
-        //create 4 objects of the labels for the fixed numbers
+        //create 3 objects of the labels for the fixed numbers
         for(int x = 0 ; x < fixed3LabelArray.length ; x++){
             fixed3LabelArray[x] = new Label();
             fixed3LabelArray[x].setText("     ");
@@ -111,14 +111,14 @@ public class Left extends VBox{
         }
         
         
-        //create 4 buttons to click for the user to choose the fixed numbers
+        //create 3 buttons to click for the user to choose the fixed numbers
         for (int j = 0 ; j < chooseNumberbutton.length ; j++){
             chooseNumberbutton[j] = new Button();
             chooseNumberbutton[j].setText("Välj nummer");
             chooseNumberbutton[j].setMinSize(30, 40);
         }
         
-        //add the 4 buttons to the hboxes
+        //add the 3 buttons to the hboxes
         for(int i = 0 ; i < hboxLabelArray.length ; i++){
             hboxLabelArray[i].getChildren().add(rowNumberlabelArray[i]);
             hboxLabelArray[i].getChildren().add(fixed3LabelArray[i]);
@@ -148,14 +148,14 @@ public class Left extends VBox{
        numberChooser.initButtonArray();
     }
     
-    //a method for recieving reference to this classe's ran11LottoRows-variable
-    public void setRan8RowsReference(Ran8LottoRows ran11LottoRows1){
+    //a method for recieving reference to this classe's ran8LottoRows-variable
+    public void setRan8RowsReference(Ran8LottoRows ran8LottoRows1){
         
-        this.ran8LottoRows = ran11LottoRows1;
+        this.ran8LottoRows = ran8LottoRows1;
         
     }
     
-    //adding listeners for the 4 choose-number buttons
+    //adding listeners for the 3 choose-number buttons
     public void chooseButtonListener(){
         for(int x = 0 ; x < chooseNumberbutton.length ; x++){
 	        chooseNumberbutton[x].setOnMouseClicked(event -> {

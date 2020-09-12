@@ -20,8 +20,8 @@ import javafx.stage.Stage;
  *
  * @author Reza
  */
-//this class handles the window that the user can click which 4 fixed numbers
-//he or she choses to have in all the 11 rows from the 35 numbers
+//this class handles the window that the user can click which 3 fixed numbers
+//he or she choses to have in all the 8 rows from the 35 numbers
 public class NumberChooser {
     
     private BorderPane borderPane = new BorderPane();
